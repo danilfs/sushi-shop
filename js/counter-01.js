@@ -12,3 +12,4 @@ btnMinus.addEventListener("click", function () {
 btnPlus.addEventListener("click", function () {
   counter.innerText = ++counter.innerText;
 });
+

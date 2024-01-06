@@ -19,9 +19,22 @@ window.addEventListener("click", (event) => {
       price: card.querySelector(".price__currency").innerText,
       counter: card.querySelector("[data-counter]").innerText,
     };
-    console.log(productInfo);
 
-    const cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
+    //ПРоверим есть ли уже такой товар в корзине
+
+    const itemInCard = cartWrapper.querySelector(
+      `[data-id= "${productInfo.id}"]`
+    );
+
+    //Если товар в корзине
+    if (itemInCard) {
+      const counterElement = itemInCard.querySelector("[data-counter]");
+      counterElement.innerText =
+        parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+    } else {
+      //Собранные данные подставим в шаблон для товара в корзине
+
+      const cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
     <div class="cart-item__top">
         <div class="cart-item__img"
             <img src="${productInfo.imgSrc}" alt=${productInfo.title}>
@@ -49,6 +62,13 @@ window.addEventListener("click", (event) => {
         </div>
     </div>
 </div>`;
-    cartWrapper.insertAdjacentHTML("beforeend", cardItemHTML);
+      cartWrapper.insertAdjacentHTML("beforeend", cardItemHTML);
+    }
+    
+//Сбрасываем счетчик добавленного товара на "1"
+    card.querySelector("[data-counter]").innerText = "1";
+
+    //Отображение статуса корзины Пустая/Полная
+    toggleCardStatus();
   }
 });

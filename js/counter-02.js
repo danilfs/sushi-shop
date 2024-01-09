@@ -10,7 +10,6 @@ window.addEventListener("click", (event) => {
   }
   if (event.target.dataset.action == "plus") {
     counter.innerText = ++counter.innerText;
-    console.log("Plus");
   }
   if (event.target.dataset.action == "minus") {
     if (parseInt(counter.innerText) > 1) {
@@ -22,6 +21,13 @@ window.addEventListener("click", (event) => {
       event.target.closest(".cart-item").remove();
 
       toggleCardStatus();
+    }
+
+    if (
+      event.target.hasAttribute("data-action") &&
+      event.target.closest(".cart-wrapper")
+    ) {
+      calcCartPrice();
     }
   }
 });

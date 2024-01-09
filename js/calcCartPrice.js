@@ -1,4 +1,4 @@
-function calcCardPrice() {
+function calcCartPrice() {
   const cartItems = document.querySelectorAll(".cart-item");
   let totalPrice = 0;
 

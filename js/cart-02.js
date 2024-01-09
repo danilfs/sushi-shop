@@ -64,11 +64,12 @@ window.addEventListener("click", (event) => {
 </div>`;
       cartWrapper.insertAdjacentHTML("beforeend", cardItemHTML);
     }
-    
-//Сбрасываем счетчик добавленного товара на "1"
+
+    //Сбрасываем счетчик добавленного товара на "1"
     card.querySelector("[data-counter]").innerText = "1";
 
     //Отображение статуса корзины Пустая/Полная
     toggleCardStatus();
+    calcCartPrice();
   }
 });

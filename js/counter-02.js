@@ -27,14 +27,15 @@ window.addEventListener("click", (event) => {
 
       toggleCardStatus();
 
-      calcCartPriceAndDelivery()
-    }
-// Проверяем клик на плюс или минус внутри корзины
-    if (
-      event.target.hasAttribute("data-action") &&
-      event.target.closest(".cart-wrapper")
-    ) {
       calcCartPriceAndDelivery();
     }
+    
+  }
+  // Проверяем клик на плюс или минус внутри корзины
+  if (
+    event.target.hasAttribute("data-action") &&
+    event.target.closest(".cart-wrapper")
+  ) {
+    calcCartPriceAndDelivery();
   }
 });

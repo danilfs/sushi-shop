@@ -1,16 +1,14 @@
-function calcCartPrice() {
-  const cartItems = document.querySelectorAll(".cart-item");
-  let totalPrice = 0;
+function calcCartPriceAndDelivery() {
+  const cartWrapper = document.querySelector(".cart-wrapper");
+  const priceEl = cartWrapper.querySelectorAll(".price__currency");
+  const totalPriceEl = document.querySelector(".total-price");
 
-  cartItems.forEach(function (item) {
-    const amountEl = item.querySelector("[data-counter]");
-    const priceEl = item.querySelector(".price__currency");
+  let priceTotal = 0;
 
-    const currentPrice =
-      parseInt(amountEl.innerText) * parseInt(priceEl.innerText);
+  priceEl.forEach(function (item) {
+    const amountEl = item.closest(".cart-item").querySelector("[data-counter]");
 
-    totalPrice += currentPrice;
+    priceTotal += parseInt(item.innerText) * parseInt(amountEl.innerText);
   });
-
-  console.log(totalPrice);
+  totalPriceEl.innerText = priceTotal;
 }

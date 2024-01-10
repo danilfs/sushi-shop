@@ -70,6 +70,5 @@ window.addEventListener("click", (event) => {
 
     //Отображение статуса корзины Пустая/Полная
     toggleCardStatus();
-    calcCartPrice();
-  }
+    calcCartPriceAndDelivery  }
 });
